@@ -1,0 +1,22 @@
+{
+  "name": "buffer",
+  "version": "0.0.1",
+  "description": "buffer for the browser and node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathanfaucett/buffer.git"
+  },
+  "main": "src/index.js",
+  "keywords": [
+    "buffer",
+    "buffer.js"
+  ],
+  "author": "Nathan Faucett",
+  "license": "BSD-2-Clause",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "",
+    "grunt-jsbeautifier": ""
+  }
+}
+
