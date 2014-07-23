@@ -1,4 +1,4 @@
-filePath
+Buffer
 =======
 
-file path utils for the browser and node.js
+Buffer for the browser and node.js
