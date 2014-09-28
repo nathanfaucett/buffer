@@ -118,9 +118,9 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
     };
 
     Buffer.prototype.fill = function(value, start, end) {
-        if (!value) value = 0
-        if (!start) start = 0
-        if (!end) end = this.length
+        if (!value) value = 0;
+        if (!start) start = 0;
+        if (!end) end = this.length;
 
         if (end < start) throw new Error("Buffer.fill(value, start, end) end < start");
 
@@ -193,7 +193,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
     Buffer.prototype.toString = Buffer.prototype.toLocaleString = function(encoding, start, end) {
         encoding = (encoding || "utf8").toLowerCase();
         start || (start = 0);
-        end = (end == undefined) ? this.length : +end;
+        end = (end == null) ? this.length : +end;
 
         if (end === start) return "";
 
@@ -228,11 +228,11 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
             if (length > remaining) length = remaining;
         }
 
-        strLen = string.length
+        strLen = string.length;
         if (strLen % 2 !== 0) throw new Error("Buffer.hexWrite(string, offset, length) Invalid hex string");
 
         if (length > strLen / 2) {
-            length = strLen / 2
+            length = strLen / 2;
         }
         for (i = 0; i < length; i++) {
             b = parseInt(string.substr(i * 2, 2), 16);
@@ -316,7 +316,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
         if (!end || end < 0 || end > len) end = len;
 
         for (i = start; i < end; i++) out += toHex(this[i]);
-        return out
+        return out;
     };
 
     Buffer.prototype.utf16leSlice = function(start, end) {
@@ -551,9 +551,9 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
         if (!isArray(list)) throw new Error("Usage: Buffer.concat(list[, length])");
 
         if (list.length === 0) {
-            return new Buffer(0)
+            return new Buffer(0);
         } else if (list.length === 1) {
-            return list[0]
+            return list[0];
         }
         var buffer, postion, item,
             i, il;
@@ -583,12 +583,13 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
 
         while (i < il && a[i] === b[i]) i++;
         if (i !== il) {
-            x = a[i]
-            y = b[i]
+            x = a[i];
+            y = b[i];
         }
         if (x < y) return -1;
         if (y < x) return 1;
-        return 0
+
+        return 0;
     };
 
     function blitBuffer(out, src, offset, length) {
@@ -597,7 +598,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
             i = 0;
 
         for (; i < length; i++) {
-            if ((i + offset >= outLength) || (i >= srcLength)) break
+            if ((i + offset >= outLength) || (i >= srcLength)) break;
             out[i + offset] = src[i];
         }
 
@@ -625,7 +626,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
 
                 h = encodeURIComponent(str.slice(start, i + 1)).substr(1).split("%");
                 for (j = 0; j < h.length; j++) {
-                    byteArray.push(parseInt(h[j], 16))
+                    byteArray.push(parseInt(h[j], 16));
                 }
             }
         }
@@ -638,9 +639,9 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
             il = str.length;
 
         for (; i < il; i++) {
-            byteArray.push(str.charCodeAt(i) & 0xFF)
+            byteArray.push(str.charCodeAt(i) & 0xFF);
         }
-        return byteArray
+        return byteArray;
     }
 
     function utf16leToBytes(str) {
@@ -664,7 +665,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
         return base64.decode(str);
     }
 
-    var base64 = (function() {
+    base64 = (function() {
         var ArrayType = typeof(Uint8Array) !== "undefined" ? Uint8Array : Array,
 
             LOOK_UP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
@@ -703,7 +704,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
 
                 placeHolders = "=" === str.charAt(len - 2) ? 2 : "=" === str.charAt(len - 1) ? 1 : 0;
                 array = new ArrayType(str.length * 3 / 4 - placeHolders);
-                l = placeHolders > 0 ? str.length - 4 : str.length
+                l = placeHolders > 0 ? str.length - 4 : str.length;
                 L = 0;
 
                 for (i = 0, j = 0; i < l; i += 4, j += 3) {
@@ -731,7 +732,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
                     i;
 
                 for (i = 0, length = uint8.length - extraBytes; i < length; i += 3) {
-                    temp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2])
+                    temp = (uint8[i] << 16) + (uint8[i + 1] << 8) + (uint8[i + 2]);
                     output += tripletToBase64(temp);
                 }
 
@@ -748,7 +749,7 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
                     output += "=";
                 }
 
-                return output
+                return output;
             }
         };
     }());
@@ -779,8 +780,8 @@ module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
     var trim_regex = /^\s+|\s+$/g;
 
     function trim(str) {
-        if (str.trim) return str.trim()
-        return str.replace(trim_regex, "")
+        if (str.trim) return str.trim();
+        return str.replace(trim_regex, "");
     }
 
 
