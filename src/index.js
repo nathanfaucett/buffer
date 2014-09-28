@@ -1,7 +1,7 @@
 module.exports = typeof(Buffer) !== "undefined" ? Buffer : (function() {
     var toString = Object.prototype.toString,
         isArray = Array.isArray || (function isArray(obj) {
-            return toString.call(subject) === "[object Array]";
+            return toString.call(obj) === "[object Array]";
         }),
         base64;
 
