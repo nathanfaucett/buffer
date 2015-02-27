@@ -18,5 +18,10 @@
     "grunt": "",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-jsbeautifier": ""
+  },
+  "dependencies": {
+    "base64_encoding": "git://github.com/nathanfaucett/base64_encoding",
+    "is_array": "git://github.com/nathanfaucett/is_array",
+    "trim": "git://github.com/nathanfaucett/trim"
   }
 }
